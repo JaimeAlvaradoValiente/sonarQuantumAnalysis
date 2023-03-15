@@ -4,7 +4,7 @@ from numpy import pi
 qreg_q = QuantumRegister(3, 'q')
 creg_c = ClassicalRegister(4, 'c')
 circuit = QuantumCircuit(qreg_q, creg_c)
-
+#generación del cicuito
 circuit.h(qreg_q[2])
 circuit.h(qreg_q[1])
 circuit.h(qreg_q[0])

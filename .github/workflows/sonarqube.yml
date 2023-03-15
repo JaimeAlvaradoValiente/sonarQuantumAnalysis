@@ -44,3 +44,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        with:
+        # Additional arguments for the sonarcloud scanner
+          args:
+            # Unique key of your project. You can find it in SonarQube > [my project] > Project Information (top-right menu)
+            # mandatory
+            -Dsonar.projectKey=JaimeAlvaradoValiente_sonarQuantumAnalysis

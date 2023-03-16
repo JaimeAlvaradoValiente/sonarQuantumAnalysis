@@ -12,4 +12,4 @@ qc.cx(q[0], q[1])
 qc.h(q[1])
 qc.x(q[1])
 qc.h(q[1])
-
+qc.measure(q, c)

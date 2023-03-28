@@ -13,9 +13,4 @@ circuit.measure(qreg_q[1], creg_c[1])
 circuit.measure(qreg_q[2], creg_c[2])
 circuit.measure(qreg_q[3], creg_c[3])
 circuit.measure(qreg_q[4], creg_c[4])
-backend = Aer.get_backend("qasm_simulator")
-x=int(shots)
-job = execute(circuit, backend, shots=x)
-result = job.result()
-counts = result.get_counts()
-return counts
+

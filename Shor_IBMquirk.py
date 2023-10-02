@@ -21,3 +21,4 @@ x=int(shots)
 job = execute(circuit, backend, shots=x)
 result = job.result()
 counts = result.get_counts()
+return counts

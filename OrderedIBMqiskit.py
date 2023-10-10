@@ -8,7 +8,7 @@ creg = ClassicalRegister(6, 'c')
 qc = QuantumCircuit(qreg, creg)
 
 qc.x(qreg[5])
-qc.h(range(qreg[5]))
+qc.h(qreg[5])
 qc.mct(qreg[5], qreg[5])  
 qft_circuit = QFT(5, do_swaps=False, inverse=True)
 qc.compose(qft_circuit, inplace=True)

@@ -11,7 +11,7 @@ qc.cx(qreg_q[2], qreg_q[5])
 qc.cx(qreg_q[3], qreg_q[5])  
 qc.cx(qreg_q[4], qreg_q[5])  
 
-qc.cx(qreg_q[:5], qreg_q[5]).c_if(creg_c,2)  
+qc.cx(qreg_q[5], qreg_q[5]).c_if(creg_c,2)  
 
 qc.measure(qreg_q, creg_c)
 

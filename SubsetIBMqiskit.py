@@ -1,8 +1,8 @@
 from qiskit import QuantumCircuit, execute, Aer, QuantumRegister, ClassicalRegister
 
 
-qreg_q = QuantumRegister(5, 'q')
-creg_c = ClassicalRegister(5, 'c')
+qreg_q = QuantumRegister(6, 'q')
+creg_c = ClassicalRegister(6, 'c')
 qc = QuantumCircuit(qreg_q, creg_c)
 
 qc.cx(qreg_q[0], qreg_q[5])  
@@ -11,8 +11,7 @@ qc.cx(qreg_q[2], qreg_q[5])
 qc.cx(qreg_q[3], qreg_q[5])  
 qc.cx(qreg_q[4], qreg_q[5])  
 
-qc.cx(qreg_q[:5], qreg_q[5])
-qc.c_if(creg_c, 2)  
+qc.cx(qreg_q[:5], qreg_q[5]).c_if(creg_c,2)  
 
 qc.measure(qreg_q, creg_c)
 

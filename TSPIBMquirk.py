@@ -1,6 +1,8 @@
-from qiskit import execute, QuantumRegister, ClassicalRegister, QuantumCircuit, Aer
+from qiskit import QuantumRegister, ClassicalRegister, QuantumCircuit, transpile
 from numpy import pi
-from qiskit import IBMQ
+from qiskit.providers.basic_provider import BasicProvider
+from qiskit_ibm_provider import IBMProvider
+import qiskit.qasm3
 qreg_q = QuantumRegister(3, 'q')
 creg_c = ClassicalRegister(3, 'c')
 circuit = QuantumCircuit(qreg_q, creg_c)
@@ -13,18 +15,19 @@ circuit.measure(qreg_q[0], creg_c[0])
 circuit.measure(qreg_q[1], creg_c[1])
 circuit.measure(qreg_q[2], creg_c[2])
 if machine == "local":
-    backend = Aer.get_backend("qasm_simulator")
+    backend = BasicProvider().get_backend("basic_simulator")
     x=int(shots)
-    job = execute(circuit, backend, shots=x)
+    transpiled_circuit = transpile(circuit, backend)
+    job = backend.run(transpiled_circuit, shots=x)
     result = job.result()
     counts = result.get_counts()
     return counts
 else:
-    IBMQ.load_account()
-    provider = IBMQ.get_provider(hub="ibm-q", group="open", project="main")
+    provider = IBMProvider()
     backend = provider.get_backend(gate_machines_arn[machine])
     x=int(shots)
-    job = execute(circuit, backend, shots=x)
+    transpiled_circuit = transpile(circuit, backend)
+    job = backend.run(transpiled_circuit, backend, shots=x)
     result = job.result()
     counts = result.get_counts()
     return counts
